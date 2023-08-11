@@ -46,7 +46,11 @@ function compareCharacterCounts(str1, str2) {
   const charCount1 = countCharacters(str1);
   const charCount2 = countCharacters(str2);
 
-  console.log("Size:", Object.keys(charCount1).length, Object.keys(charCount2).length);
+  console.log(
+    "Size:",
+    Object.keys(charCount1).length,
+    Object.keys(charCount2).length
+  );
 
   if (JSON.stringify(charCount1) !== JSON.stringify(charCount2)) {
     console.log("Character count mismatch");
@@ -64,7 +68,7 @@ compareCharacterCounts(s1, t1);
 // that takes a string and returns an object with character counts.
 // This function makes the code more modular and reusable.
 
-//Comparison Function: I created a function called compareCharacterCounts 
+//Comparison Function: I created a function called compareCharacterCounts
 //that takes two strings and compares their character counts.
 //This function uses the countCharacters function and compares
 //the resulting objects using JSON.stringify.
@@ -78,7 +82,29 @@ compareCharacterCounts(s1, t1);
 
 // Consistent Formatting: I formatted the code consistently for better readability.
 
-// Please note that I've removed the original addSymbol and deleteSymbol 
-//functions as they weren't being used in the provided code. 
-//If you still need those functions, you can adapt them in 
+// Please note that I've removed the original addSymbol and deleteSymbol
+//functions as they weren't being used in the provided code.
+//If you still need those functions, you can adapt them in
 //a similar manner to the countCharacters function I provided.
+
+const solution = (s, t) => {
+  if (s.length !== t.length) {
+    return false;
+  }
+
+  const countS = {},
+    countT = {};
+
+  for (let i = 0; i < s.length; i++) {
+    countS[s[i]] = countS[s[i]] ? countS[s[i]] + 1 : 1;
+    countT[t[i]] = countT[t[i]] ? countT[t[i]] + 1 : 1;
+  }
+
+  for (let key of Object.keys(countS)) {
+    if (!(countS[key] === countT[key])) {
+      return false;
+    }
+  }
+
+  return true;
+};
