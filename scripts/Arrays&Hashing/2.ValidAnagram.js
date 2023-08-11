@@ -108,3 +108,8 @@ const solution = (s, t) => {
 
   return true;
 };
+
+const solutionSort = (s, t) => {
+  const sortS = s.split('').sort().join('')
+  const sortT = t.split('').sort().join('')
+};
